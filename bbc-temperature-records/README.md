@@ -20,4 +20,4 @@ There were a few things that still have me stumped, that I might revisit at some
 - [ ] Using the YeOrRd gradient, rather than default blues 
 - [ ] Adding a non-BBC logo to the bottom right.
 
-If anyone with superior ggplot skills would like to help with that or give pointers, I would be very 
+If anyone with superior ggplot skills would like to help with those or give pointers, then I would be most grateful.
