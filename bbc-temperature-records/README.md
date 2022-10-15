@@ -15,9 +15,9 @@ It took a while, but I got most of the way there with it and am happy with the f
 
 There were a few things that still have me stumped, that I might revisit at some later date: 
 
-- Left aligning title and 
-- Using gradients on multiple parts of the plot
-- Using the YeOrRd gradient, rather than default blues 
-- Adding a non-BBC logo to the bottom right.
+- [ ] Left aligning title and caption
+- [ ] Using gradients on multiple parts of the plot
+- [ ] Using the YeOrRd gradient, rather than default blues 
+- [ ] Adding a non-BBC logo to the bottom right.
 
 If anyone with superior ggplot skills would like to help with that or give pointers, I would be very 
