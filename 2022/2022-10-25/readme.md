@@ -2,4 +2,4 @@
 
 ## Great British Bake Off 
 
-![](2022-10-25/2022-10-25-bake-off.png)
+![](2022-10-25-bake-off.png)
