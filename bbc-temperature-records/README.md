@@ -1,6 +1,6 @@
 # BBC Temperature Records
 
-On Friday 2022-10-14, the BBC Data Journalism Team released this excellent [article](https://www.bbc.co.uk/news/science-environment-63244353) about the record temperatures in the UK during this summer's heatwave. The article has some amazing data visualistions, and draws on a recent Met Office report.
+On Friday 2022-10-14, the BBC Data Journalism Team released this excellent [article](https://www.bbc.co.uk/news/science-environment-63244353) about the record temperatures in the UK during this summer's heatwave. The article has some amazing data visualisations, and draws on a recent Met Office report.
 
 I wanted to try and recreate one of the plots to test the limits of my ggplot knowledge. Since I had already tackled a stacked barplot, I figured I might have a go at their dumbbell plot that shows the weather stations which exeeded their previous records largest margins.
 
