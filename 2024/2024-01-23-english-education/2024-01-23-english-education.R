@@ -164,9 +164,20 @@ ggplot() +
 # Save GIF ---------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+out_path <- file.path("2024", "2024-01-23-english-education", "english-education")
+
+ggsave(
+  filename = paste0(out_path, ".png"),
+  device = "png",
+  width = 7.5,
+  height = 6.5,
+  units = "in",
+  dpi = 300,
+  bg = pal["white"]
+)
 
 gg_playback(
-  name = file.path("2024", "2024-01-23-english-education", paste0("english-education", ".gif")),
+  name = paste0(out_path, ".gif"),
   first_image_duration = 4,
   last_image_duration = 20,
   frame_duration = .25,
