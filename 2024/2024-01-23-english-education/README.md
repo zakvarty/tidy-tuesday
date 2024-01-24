@@ -1,9 +1,9 @@
-<h1 align="center"> US Polling Places </h1>
+<h1 align="center"> English Education </h1>
 
 <h2>Visualisation</h2>
 
 <p align="center">
-  <img src="./ebglish-education.png" width="60%">
+  <img src="./english-education.png" width="60%">
 </p>
 
 <h2>How it was made</h2>
