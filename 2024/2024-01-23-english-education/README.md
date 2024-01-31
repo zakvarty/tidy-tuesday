@@ -28,3 +28,7 @@ The making of this visualisation was recorded with the `{camcorder}` package.
 <p align="center">
   <img src="./english-education.gif" width="60%">
 </p>
+
+## Walkthrough 
+
+New to {ggplot2}? I made a set of [HTML slides](https://zakvarty.github.io/effective-data-science-resources/demo-classes/03-tidy-tuesday-walkthrough/tidy-tuesday.html#/title-slide) walking you through my development process.
