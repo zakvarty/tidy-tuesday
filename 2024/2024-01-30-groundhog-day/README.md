@@ -31,8 +31,6 @@ I also played around with adding images to `{ggplot2}` objects using `{ggimage}`
   <img src="./groundhog-day.png" width="60%">
 </p>
 
-My original plan was to have a groundhog replace each orange dot, but I accidentally created the image with an off-white rather than transparent background. You live and you learn.
-
 ## Recording
 
 The making of this visualisation was recorded with the `{camcorder}` package.

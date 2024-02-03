@@ -40,6 +40,7 @@ hogs <- groundhogs %>%
 
 ## annotations ----------------------------------------
 img_path <- file.path(dir_path, "groundhog.png")
+transparent_img_path <- file.path(dir_path, "groundhog-transparent.png")
 
 ## Text strings -----------------------------------------
 strings <- list(
@@ -72,22 +73,13 @@ gg_record(
 # Plot -------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
-ggplot() +
+p <- ggplot() +
   geom_polygon(
     data = state_map,
     mapping = aes(x = long, y = lat, group = group),
     fill = pal$onyx,
     colour = pal$light_grey) +
   coord_fixed(1.3) +
-  geom_point(
-   data = hogs,
-   mapping = aes(x = longitude, y = latitude),
-   colour = pal$orange,
-   size = 1.7) +
-  geom_image(
-   mapping = aes(x = c(-70,-115,-78), y = c(30, 27.5,47)),
-   image = img_path,
-   size = 0.2) +
   labs(title = strings$title, subtitle = strings$sub, caption = strings$attr) +
   zvplot::theme_zv() +
   theme(
@@ -101,6 +93,33 @@ ggplot() +
     axis.title = element_blank(),
   )
 
+# More sensible version of plot
+p1 <- p +
+  geom_point(
+    data = hogs,
+    mapping = aes(x = longitude, y = latitude),
+    colour = pal$orange,
+    size = 1.7) +
+  geom_image(
+    mapping = aes(x = -70, y = 30),
+    image = img_path,
+    size = 0.3)
+
+# more fun version of plot
+p2 <- p +
+  geom_image(
+    data = hogs,
+    mapping = aes(x = longitude, y = latitude),
+    image = transparent_img_path,
+    size = 0.05) +
+  #ggforce::geom_circle(aes(x0 = -70, y0 = 27.5, r = 5), color = pal$onyx, fill = pal$onyx) +
+  geom_image(
+    mapping = aes(x = -70, y = 27.5),
+    image = transparent_img_path,
+    size = 0.275)
+
+p2
+
 #-------------------------------------------------------------------------------
 # Save GIF ---------------------------------------------------------------------
 #-------------------------------------------------------------------------------
@@ -108,6 +127,7 @@ ggplot() +
 out_path <- file.path(dir_path, "groundhog-day")
 
 ggsave(
+  plot = p2,
   filename = paste0(out_path, ".png"),
   device = "png",
   width = 7,
