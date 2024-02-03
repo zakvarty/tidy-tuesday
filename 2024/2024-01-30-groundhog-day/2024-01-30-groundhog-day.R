@@ -1,0 +1,126 @@
+# Tidy Tuesday 2024-01-30: Groundhog day
+
+# Path relative to project root -----------------------------------------------
+dir_path <- file.path(".", "2024", "2024-01-30-groundhog-day")
+
+# ------------------------------------------------------------------------------
+# Load required packages -------------------------------------------------------
+# ------------------------------------------------------------------------------
+library(tidytuesdayR)           # loading data
+library(ggplot2)                # plotting
+library(dplyr)                  # data manipulation
+library(maps)
+library(mapdata)                # US map
+library(ggimage)                # image files a plotting characters
+library(ggtext)                 # element_markdown for subtitle formatting
+library(camcorder)              # record process
+
+#-------------------------------------------------------------------------------
+# Load data --------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+tues_data <- tidytuesdayR::tt_load('2024-01-30')
+
+groundhogs <- tues_data$groundhogs
+predictions <- tues_data$predictions
+
+# ------------------------------------------------------------------------------
+# Data Wrangling ---------------------------------------------------------------
+# ------------------------------------------------------------------------------
+
+## main plot ----------------------------------------
+
+state_map <- ggplot2::map_data(map = "state")
+
+hogs <- groundhogs %>%
+  transmute(
+    region = factor(stringr::str_to_lower(region)),
+    latitude = latitude,
+    longitude = longitude) %>%
+  filter(region %in% unique(state_map$region))
+
+## annotations ----------------------------------------
+img_path <- file.path(dir_path, "groundhog.png")
+
+## Text strings -----------------------------------------
+strings <- list(
+  title = "Groundhog Locations in the Contiguious United States",
+  sub = "Colder regions in the North and East are more likely to take part in the groundhog day tradition.",
+  cap = "",
+  attr = "**Tidy Tuesday:** 2024-01-30 || **Data:** groundhog-day.com || **Plot:** @zakvarty"
+)
+
+## Colour palette --------------------------------------
+pal <- list(
+   orange = "#F7902C",
+   onyx = "#2E3532",
+   light_grey = "grey95")
+
+# ------------------------------------------------------------------------------
+# Start recording --------------------------------------------------------------
+# ------------------------------------------------------------------------------
+
+gg_record(
+  dir = file.path(dir_path, "recording"),
+  device = "png",
+  width = 7.5,
+  height = 6.5,
+  units = "in",
+  dpi = 300
+)
+
+#-------------------------------------------------------------------------------
+# Plot -------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+ggplot() +
+  geom_polygon(
+    data = state_map,
+    mapping = aes(x = long, y = lat, group = group),
+    fill = pal$onyx,
+    colour = pal$light_grey) +
+  coord_fixed(1.3) +
+  geom_point(
+   data = hogs,
+   mapping = aes(x = longitude, y = latitude),
+   colour = pal$orange,
+   size = 1.7) +
+  geom_image(
+   mapping = aes(x = c(-70,-115,-78), y = c(30, 27.5,47)),
+   image = img_path,
+   size = 0.2) +
+  labs(title = strings$title, subtitle = strings$sub, caption = strings$attr) +
+  zvplot::theme_zv() +
+  theme(
+    plot.title = element_markdown(size = 56, hjust = 0, face = "bold"),
+    plot.title.position = "plot",
+    plot.subtitle = element_markdown(size = 36, hjust = 0),
+    plot.caption = element_markdown(size = 36, hjust = 0),
+    plot.caption.position = "plot",
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    axis.title = element_blank(),
+  )
+
+#-------------------------------------------------------------------------------
+# Save GIF ---------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+out_path <- file.path(dir_path, "groundhog-day")
+
+ggsave(
+  filename = paste0(out_path, ".png"),
+  device = "png",
+  width = 7,
+  height = 5,
+  units = "in",
+  dpi = 300
+)
+
+gg_playback(
+  name = paste0(out_path, ".gif"),
+  first_image_duration = 4,
+  last_image_duration = 20,
+  frame_duration = .15,
+  progress = TRUE
+)
+
