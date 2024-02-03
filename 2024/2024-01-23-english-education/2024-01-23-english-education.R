@@ -1,4 +1,4 @@
-# Tidy Tuesday 2024-01-02: Bring your own data from 2023
+# Tidy Tuesday 2024-01-23: Educational Attainment in England
 
 # Path relative to project root -----------------------------------------------
 dir_path <- "2024/2024-01-23-english-education/"
