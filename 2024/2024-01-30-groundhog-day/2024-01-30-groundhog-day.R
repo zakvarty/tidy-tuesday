@@ -44,7 +44,7 @@ transparent_img_path <- file.path(dir_path, "groundhog-transparent.png")
 
 ## Text strings -----------------------------------------
 strings <- list(
-  title = "Groundhog Locations in the Contiguious United States",
+  title = "Groundhog Locations in the Contiguous United States",
   sub = "Colder regions in the North and East are more likely to take part in the groundhog day tradition.",
   cap = "",
   attr = "**Tidy Tuesday:** 2024-01-30 || **Data:** groundhog-day.com || **Plot:** @zakvarty"
